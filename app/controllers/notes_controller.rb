@@ -1,8 +1,9 @@
 class NotesController < ApplicationController
   before_action :find_note, only: [:index, :show, :edit, :update, :destroy]
+
   
   def index 
-    @notes = Note.all.reverse
+    @notes = Note.where(user_id: current_user)
   end 
 
   def show 
